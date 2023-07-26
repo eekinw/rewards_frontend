@@ -105,11 +105,13 @@ div[role='dialog'] header {
 
 .nav-tabs .nav-link {
     color: #361999;
+
 }
 
 .nav-tabs .nav-link.active {
     color: #361999;
     border-color: #6b66fa;
+    
 }
 
 .modal_open {
@@ -127,3 +129,8 @@ div[role='dialog'] header {
         transform: translate3d(0, 0, 0);
     }
 }
+
+aside {
+    background-color: #F7F7F7;
+}
+
