@@ -1,27 +1,45 @@
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
 interface Reward {
-  id: string;
+  id: number;
   name: string;
-  points: number;
-  category: string;
+  category_title: string;
   quantity: number;
   description: string;
 }
+
+const fetchRewardById = async (id: string) => {
+  const reward = await prisma.reward.findUnique({
+    where: {
+      id: parseInt(id),
+    },
+    select: {
+      id: true,
+      name: true,
+      category_title: true,
+      quantity: true,
+      description: true,
+    },
+  });
+
+  return reward;
+};
 
 export default async function RewardsPage({
   params,
 }: {
   params: { id: string };
 }) {
-  console.log("ID:", params.id);
+  // console.log("ID:", params.id);
 
-  const res: Reward[] = await fetch("http://localhost:3003/api/rewards/").then(
-    (res) => res.json()
-  );
-  console.log("API Response:", res);
+  const reward = await fetchRewardById(params.id);
+  // console.log("Type of ID:", typeof params.id);
 
-  const reward = res.find((reward) => reward.id === params.id);
-  console.log("Found Reward:", reward);
-  console.log("Type of ID:", typeof params.id);
+  // const reward = res.find((reward) => reward.id === params.id);
+  // console.log("Found Reward:", reward);
+  // console.log("Type of ID:", typeof params.id);
 
   return (
     <main className="fixed top-[150px] left-[250px] right-[50px]">
@@ -29,10 +47,9 @@ export default async function RewardsPage({
         {reward ? (
           <>
             <p>{reward.name}</p>
-            <p>{reward.category}</p>
+            <p>{reward.category_title}</p>
             <p>{reward.description}</p>
             <p>{reward.quantity}</p>
-            <p>{reward.points}</p>
           </>
         ) : (
           <p>No reward found</p>

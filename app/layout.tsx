@@ -16,8 +16,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavMenu />
-        <SideBar />
+        <nav className="fixed top-0 left-0 right-0 ml-[220px] py-6 px-2">
+          <NavMenu />
+        </nav>
+
+        <div className="fixed top-0 left-0 bottom-0 w-[220px] p-4 bg-[#F7F7F7] border-r border-gray-200 overflow-y-auto">
+          <div className="mt-[60px] p-5">
+            <SideBar />
+          </div>
+        </div>
+
         <main>{children}</main>
       </body>
     </html>

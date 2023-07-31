@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function NavMenu() {
   return (
-    <nav className="fixed top-0 left-0 right-0 ml-[220px] flex justify-between py-6 px-2 h-[80px]">
+    <div className="flex justify-between items-center">
       <div className="flex items-center gap-5">
         <Link href={"/"}>
           <Image src="/favicon.png" width={40} height={60} alt="SUPA Logo" />
@@ -15,18 +15,21 @@ export default function NavMenu() {
           </button>
         </div>
       </div>
-      <ul className="list-none flex mr-1 gap-5 ">
-        <li>
-          <Link className="no-underline" href={"/rewards"}>
-            Rewards
-          </Link>
-        </li>
-        <li>
-          <Link className="no-underline" href={"/redemptions"}>
-            Redemptions
-          </Link>
-        </li>
-      </ul>
-    </nav>
+
+      <div>
+        <ul className="list-none flex mr-1 gap-5 ">
+          <li>
+            <Link className="no-underline" href={"/"}>
+              Rewards
+            </Link>
+          </li>
+          <li>
+            <Link className="no-underline" href={"/redemptions"}>
+              Redemptions
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 }
