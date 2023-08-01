@@ -26,7 +26,7 @@ export default function RootLayout({
           </div>
         </div>
 
-        <main>{children}</main>
+        <main className="fixed left-[250px] top-[150px] w-3/4">{children}</main>
       </body>
     </html>
   );
