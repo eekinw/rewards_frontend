@@ -2,25 +2,30 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// interface Reward {
-//   id: number;
-//   name: string;
-//   points: number;
-//   category: string;
-//   quantity: number;
-//   description: string;
-// }
+interface Rewards {
+  id: number;
+  name: string;
+  category_id: number;
+  category_title: string;
+  points_required: number;
+  is_redeemable: boolean;
+  quantity: number;
+  description: string;
+}
 
-const fetchRewards = async () => {
-  const rewards = await prisma.reward.findMany();
+async function getAllRewards() {
+  const res = await fetch("http://localhost:3100/admin/rewards", {
+    cache: "no-store",
+  });
 
-  return rewards;
-};
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
 
 export default async function Home() {
-  const rewards = await fetchRewards();
-
-  console.log(rewards);
+  const rewards = await getAllRewards();
 
   // return rewards;
   // The above doesn't work! Because 'rewards' are objects, which are not valid as a React child
@@ -28,22 +33,24 @@ export default async function Home() {
   return (
     <main className="fixed top-[150px] left-[250px] right-[50px]">
       <div className="flex justify-around mb-6">
-        <div className="grid gap-4 grid-cols-4 justify-around text-center w-full">
+        <div className="grid gap-4 grid-cols-5 justify-around text-center w-full">
           <h3 className="font-bold">Reward Name</h3>
           <h3 className="font-bold">Category</h3>
           <h3 className="font-bold">Description</h3>
+          <h3 className="font-bold">Points Required</h3>
           <h3 className="font-bold">Quantity Remaining</h3>
         </div>
       </div>
 
-      {rewards.map((reward) => (
+      {rewards.map((reward: Rewards) => (
         <div
           key={reward.id}
-          className="grid gap-4 grid-cols-4 p-4 border shadow-md text-center"
+          className="grid gap-4 grid-cols-5 p-4 border shadow-md text-center"
         >
           <p>{reward.name}</p>
           <p>{reward.category_title}</p>
           <p>{reward.description}</p>
+          <p>{reward.points_required}</p>
           <p>{reward.quantity}</p>
         </div>
       ))}
