@@ -33,8 +33,8 @@ export default async function RedemptionsPage() {
 
   return (
     <main>
-      <div className="flex justify-around mb-6">
-        <div className="grid gap-4 grid-cols-7 justify-around text-center w-full">
+      <div className="flex mb-6">
+        <div className="grid gap-4 grid-cols-6 justify-around text-center w-full">
           <h3 className="font-bold">Redemption ID</h3>
           <h3 className="font-bold">User Email</h3>
           <h3 className="font-bold">User Status</h3>
@@ -46,7 +46,7 @@ export default async function RedemptionsPage() {
       {redemptions.map((redemption: Redemptions) => (
         <div
           key={redemption.id}
-          className="grid gap-4 grid-cols-7 p-4 border shadow-md text-center"
+          className="grid gap-4 grid-cols-6 p-4 border shadow-md text-center"
         >
           <p>{redemption.id ? redemption.id : "No redemption ID found"}</p>
           <p>
@@ -54,7 +54,13 @@ export default async function RedemptionsPage() {
           </p>
           <p>{redemption.user.user_status}</p>
           <p>{redemption.reward_id}</p>
-          <p>{redemption.redemption_date.toString()}</p>
+          <p>{new Date(redemption.redemption_date).toString()}</p>
+          <Link
+            href={`/admin/rewards/${redemption.reward_id}/redemptions`}
+            className="link-with-space"
+          >
+            More
+          </Link>
         </div>
       ))}
     </main>

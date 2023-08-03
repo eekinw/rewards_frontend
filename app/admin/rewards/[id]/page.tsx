@@ -12,7 +12,7 @@ const getIndividualReward = async (id: number) => {
   }
 
   const data = await res.json();
-
+  console.log(data);
   return data;
 };
 
@@ -71,7 +71,10 @@ export default async function IndividualReward({ params }: Props) {
         <h2 className="font-bold text-xl">Redemptions: </h2>
         <p>
           Click
-          <Link href={`/admin/redemptions`} className="link-with-space">
+          <Link
+            href={`/admin/rewards/${rewardId}/redemptions`}
+            className="link-with-space"
+          >
             here
           </Link>{" "}
           to see who redeemed this reward
