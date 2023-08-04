@@ -4,9 +4,9 @@ import Image from "next/image";
 export default function NavMenu() {
   return (
     <div className="flex justify-between items-center">
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 ml-5">
         <Link href={"/"}>
-          <Image src="/favicon.png" width={40} height={60} alt="SUPA Logo" />
+          <Image src="/favicon.svg" width={30} height={50} alt="SUPA Logo" />
         </Link>
         <h1 className="text-2xl font-bold">Rewards & Badges</h1>
         <div>

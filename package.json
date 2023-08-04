@@ -2,13 +2,14 @@
   "name": "rewardsapp",
   "version": "0.1.0",
   "private": true,
-"scripts": {
+  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@prisma/client": "^5.0.0",
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",

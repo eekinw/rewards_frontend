@@ -22,41 +22,31 @@ async function getAllRewards() {
   return res.json();
 }
 
-const deleteReward = async (id: number) => {
-  try {
-    const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
-      method: "DELETE",
-    });
+// async function deleteReward(id: number) {
+//   try {
+//     const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+//       method: "DELETE",
+//     });
 
-    const data = await res.json();
+//     const data = await res.json();
+//     console.log(data);
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
+//     if (!res.ok) {
+//       throw new Error("Failed to fetch data");
+//     }
 
-    getAllRewards();
-  } catch (error) {
-    console.error("Error deleting reward:", error);
-    throw error;
-  }
-};
+//     getAllRewards();
+//   } catch (error) {
+//     console.error("Error deleting reward:", error);
+//     throw error;
+//   }
+// }
 
-export default async function Home() {
+export default async function Home({ allRewards }: { allRewards: Rewards[] }) {
   const rewards = await getAllRewards();
 
   // return rewards;
   // The above doesn't work! Because 'rewards' are objects, which are not valid as a React child
-
-  const handleDeleteReward = async (id: number) => {
-    try {
-      // Call the deleteReward function with the ID of the reward to delete
-      const updatedRewards = await deleteReward(id);
-      // Handle the updated rewards data as needed
-      console.log("Reward deleted successfully!");
-    } catch (error) {
-      console.error("Error deleting reward:", error);
-    }
-  };
 
   return (
     <main className="fixed top-[150px] left-[250px] right-[50px] ">
@@ -81,15 +71,6 @@ export default async function Home() {
           <p>{reward.points_required}</p>
           <p>{reward.quantity}</p>
           <Link href={`admin/rewards/${reward.id}`}>More</Link>
-          {/* <button className="font-bold text-[#6b66fa] hover:scale-105 cursor-pointer">
-            EDIT
-          </button> */}
-          <button
-            // onClick={() => handleDeleteReward(reward.id)}
-            className="bg-red-400 w-auto hover:bg-red-700 hover:scale-105 text-white font-bold p-2 rounded"
-          >
-            DELETE
-          </button>
         </div>
       ))}
     </main>
