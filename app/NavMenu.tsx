@@ -11,7 +11,7 @@ export default function NavMenu() {
         <h1 className="text-2xl font-bold">Rewards & Badges</h1>
         <div>
           <Link href={"/admin/new"}>
-            <button className="border-solid border-2 border-black px-4 py-2 cursor-pointer">
+            <button className="border-solid border-2 border-black px-2 py-1 cursor-pointer">
               {" "}
               + Create New
             </button>

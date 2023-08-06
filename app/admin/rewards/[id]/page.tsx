@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-import Edit from "../../../../public/edit.svg";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
@@ -9,8 +7,9 @@ interface Props {
 }
 
 const getIndividualReward = async (id: number) => {
-  const res = await fetch(`http://localhost:3100/admin/rewards/${id}`);
-
+  const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -49,9 +48,11 @@ export default async function IndividualReward({ params }: Props) {
                   <h3 className="font-bold text-[#6b66fa]">
                     {reward.points_required} KPs
                   </h3>
-                  <button className="h-6 w-6 text-[#2B2B2B]">
-                    <PencilSquareIcon />
-                  </button>
+                  <Link href={`/admin/rewards/${rewardId}/edit`}>
+                    <button className="h-6 w-6 text-[#2B2B2B]">
+                      <PencilSquareIcon />
+                    </button>
+                  </Link>
                   <button className="h-6 w-6 text-[#2B2B2B]">
                     <TrashIcon />
                   </button>
