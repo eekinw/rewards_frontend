@@ -83,7 +83,7 @@ export default async function IndividualReward({ params }: Props) {
       </div>
 
       <div className="mt-5 flex flex-col gap-y-3">
-        <h2 className="font-bold text-xl">I want to redeem something! </h2>
+        <h2 className="font-bold text-xl">I want to redeem this! </h2>
         <p>
           Click
           <Link
@@ -92,7 +92,7 @@ export default async function IndividualReward({ params }: Props) {
           >
             here
           </Link>{" "}
-          to redeem a reward
+          to redeem this reward
         </p>
       </div>
     </>

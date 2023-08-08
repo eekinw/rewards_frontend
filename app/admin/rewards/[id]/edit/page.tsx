@@ -5,7 +5,7 @@ interface Props {
   params: { id: number };
 }
 
-// fetch all reward data
+// fetch individual reward
 const getIndividualReward = async (id: number) => {
   const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
     cache: "no-cache",

@@ -2,7 +2,7 @@
 import { useTransition } from "react";
 import React from "react";
 import Link from "next/link";
-import { deleteReward } from "@/lib/delete";
+import { redeemReward } from "@/lib/redeem";
 
 interface RedeemModalProps {
   id: number;
@@ -17,13 +17,13 @@ export default function RedeemModal({ id }: RedeemModalProps) {
         </header>
 
         <div className="flex justify-end mt-4">
-          <Link href=".">
-            <button className="mr-3 px-4 py-2 bg-gray-300 rounded-full hover:bg-gray-400 transition duration-200 ease-in-out">
+          <Link href="..">
+            <button className="mr-3 px-4 py-2 bg-white text-[#6b66fa] border-[#6b66fa] border rounded-full hover:bg-gray-400 transition duration-200 ease-in-out">
               Back
             </button>
           </Link>
-          <button className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200 ease-in-out">
-            Delete
+          <button className="px-4 py-2 bg-[#6b66fa]  text-white rounded-full hover:bg-red-600 transition duration-200 ease-in-out">
+            Redeem
           </button>
         </div>
       </div>

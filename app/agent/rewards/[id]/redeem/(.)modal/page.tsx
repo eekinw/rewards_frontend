@@ -54,6 +54,7 @@ export default async function RedeemPage({ params }: Props) {
   const reward = await getIndividualReward(rewardId);
 
   const users = await getAllUsers();
+  // const chosenUser = await
   return (
     <>
       <div>
@@ -85,30 +86,34 @@ export default async function RedeemPage({ params }: Props) {
           </select>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {reward ? (
-            <>
-              <div
-                key={reward.id}
-                className="p-4 border rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow"
-              >
-                <span className="block mb-2 font-semibold text-gray-700">
-                  {reward.name}
-                </span>
-                <span className="block mb-4 text-gray-600">
-                  {reward.points_required} points
-                </span>
-                <Link
-                  href={`/agent/rewards/${reward.id}/redeem/modal`}
-                  className="w-full p-2 bg-white border-indigo-600 border-solid border text-indigo-600 font-semibold rounded no-underline"
+        <div className="flex justify-center">
+          <div className="w-1/2 ">
+            {reward ? (
+              <>
+                <div
+                  key={reward.id}
+                  className="flex flex-col justify-center items-center p-4 mt-[50px] border rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow"
                 >
-                  Redeem
-                </Link>
-              </div>
-            </>
-          ) : (
-            <p>No such reward found!</p>
-          )}
+                  <span className="block mb-2 font-semibold text-gray-700">
+                    {reward.name}
+                  </span>
+                  <span className="block mb-4 text-gray-600">
+                    {reward.points_required} points
+                  </span>
+                  {
+                    <Link
+                      href={`/agent/rewards/${reward.id}/redeem/modal`}
+                      className="w-full p-2 text-center bg-white border-indigo-600 border-solid border text-indigo-600 font-semibold rounded no-underline"
+                    >
+                      Redeem
+                    </Link>
+                  }
+                </div>
+              </>
+            ) : (
+              <p>No such reward found!</p>
+            )}
+          </div>
         </div>
       </div>
     </>
