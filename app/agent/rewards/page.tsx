@@ -53,7 +53,7 @@ export default async function Home({ allRewards }: { allRewards: Rewards[] }) {
           <p>{reward.description}</p>
           <p>{reward.points_required}</p>
           <p>{reward.quantity}</p>
-          <Link href={`admin/rewards/${reward.id}`}>More</Link>
+          <Link href={`/agent/rewards/${reward.id}`}>More</Link>
         </div>
       ))}
     </main>

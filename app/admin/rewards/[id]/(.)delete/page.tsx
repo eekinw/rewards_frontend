@@ -1,3 +1,4 @@
+import Modal from "../../../../../components/DeleteModal";
 import Link from "next/link";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/solid";
@@ -19,7 +20,7 @@ const getIndividualReward = async (id: number) => {
   return data;
 };
 
-export default async function IndividualReward({ params }: Props) {
+export default async function IndividualReward({ params }: Props, id: number) {
   const rewardId = params.id;
   const reward = await getIndividualReward(rewardId);
 
@@ -29,6 +30,9 @@ export default async function IndividualReward({ params }: Props) {
 
   return (
     <>
+      <div>
+        <Modal id={rewardId} />
+      </div>
       <div className="flex flex-col">
         {reward ? (
           <>

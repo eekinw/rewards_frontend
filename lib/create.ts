@@ -3,11 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation"
 
+
 export async function createReward(data: FormData) {
   const name = data.get("name");
-  const category_title = data.get("category_title");
+  const category_title = data.get("category_title") as string;
   const category_id = parseInt(data.get("category_id") as string);
-   const points_required = parseInt(data.get("points_required") as string);
+  const points_required = parseInt(data.get("points_required") as string);
   const quantity = parseInt(data.get("quantity") as string);
 //   const is_redeemable = data.get("is_redeemable");
   const description = data.get("description");

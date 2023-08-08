@@ -1,9 +1,11 @@
-import { revalidatePath } from "next/cache";
+import { editReward } from "@/lib/edit";
+import Link from "next/link";
 
 interface Props {
   params: { id: number };
 }
 
+// fetch all reward data
 const getIndividualReward = async (id: number) => {
   const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
     cache: "no-cache",
@@ -14,35 +16,25 @@ const getIndividualReward = async (id: number) => {
   }
 
   const data = await res.json();
+  console.log(data);
   return data;
 };
 
 export default async function EditRewardPage({ params }: Props) {
-  // fetch reward
   const rewardId = params.id;
   const reward = await getIndividualReward(rewardId);
 
-  async function editReward(data: FormData) {
-    "use server";
-    // mutate data
-    await fetch(`http://localhost:3100/admin/rewards/${rewardId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: data.get("name"),
-        description: data.get("description"),
-        points_required: data.get("points_required"),
-        quantity: data.get("quantity"),
-      }),
-    });
-
-    // revalidate;
-    revalidatePath(`admin/rewards/${reward.id}/edit`);
-  }
   return (
     <div>
-      <form action={editReward} className=" max-w-2xl mx-auto p-4 shadow-md">
-        <h2 className="font-bold mb-5 text-xl">Edit Reward {reward.id}</h2>
+      <h2 className="font-bold mb-5 text-xl">Edit Reward {reward.id}</h2>
+      <form
+        action={async (e) => {
+          "use server";
+          editReward(e, params.id);
+        }}
+        // action={editReward(e, params.id)}
+        className=" max-w-2xl mx-auto p-4 shadow-md"
+      >
         <div className="space-y-6 p-5 flex flex-col">
           <label className="block text-gray-700 font-semibold mb-2">
             Reward Name
@@ -67,7 +59,7 @@ export default async function EditRewardPage({ params }: Props) {
           </label>
           <input
             type="number"
-            name="points"
+            name="points_required"
             className="w-full border border-gray-300 p-2 rounded-md"
             defaultValue={reward.points_required}
           />
@@ -82,11 +74,10 @@ export default async function EditRewardPage({ params }: Props) {
           />
           <div className="flex gap-x-3">
             {" "}
-            <button
-              type="submit"
-              className="w-full bg-white border-indigo-600 border-solid border text-indigo-600 font-semibold py-2 rounded-md"
-            >
-              CANCEL
+            <button className="w-full bg-white border-indigo-600 border-solid border text-indigo-600 font-semibold py-2 rounded-md">
+              <Link className="no-underline" href=".">
+                CANCEL
+              </Link>
             </button>
             <button
               type="submit"

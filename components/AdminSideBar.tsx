@@ -8,7 +8,10 @@ export default function SideBar() {
         <Link href={"/"} className="text-black no-underline cursor-not-allowed">
           Dashboard
         </Link>
-        <Link href={"/"} className="text-black no-underline cursor-not-allowed">
+        <Link
+          href={`/agent/profile`}
+          className="text-[#6b66fa] font-bold no-underline hover:scale-105"
+        >
           User management
         </Link>
         <Link href={"/"} className="text-black no-underline cursor-not-allowed">
@@ -21,7 +24,13 @@ export default function SideBar() {
           href={"/"}
           className="text-[#6b66fa] font-bold no-underline hover:scale-105"
         >
-          Rewards
+          Admin Rewards
+        </Link>
+        <Link
+          href={`/agent/rewards`}
+          className="text-[#6b66fa] font-bold no-underline hover:scale-105"
+        >
+          Agent Rewards
         </Link>
       </ul>
     </div>

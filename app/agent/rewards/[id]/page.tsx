@@ -48,15 +48,11 @@ export default async function IndividualReward({ params }: Props) {
                   <h3 className="font-bold text-[#6b66fa]">
                     {reward.points_required} KPs
                   </h3>
-                  <Link href={`/admin/rewards/${rewardId}/edit`}>
-                    <button className="h-6 w-6 text-[#2B2B2B]">
-                      <PencilSquareIcon />
-                    </button>
-                  </Link>
-                  <Link href={`/admin/rewards/${rewardId}/delete`}>
-                    <button className="h-6 w-6 text-[#2B2B2B]">
-                      <TrashIcon />
-                    </button>
+                  <Link
+                    className="text-black font-bold no-underline"
+                    href={"."}
+                  >
+                    Go Back
                   </Link>
                 </div>
               </div>
@@ -87,16 +83,16 @@ export default async function IndividualReward({ params }: Props) {
       </div>
 
       <div className="mt-5 flex flex-col gap-y-3">
-        <h2 className="font-bold text-xl">Redemptions: </h2>
+        <h2 className="font-bold text-xl">I want to redeem something! </h2>
         <p>
           Click
           <Link
-            href={`/admin/rewards/${rewardId}/redemptions`}
+            href={`/agent/rewards/${rewardId}/redeem`}
             className="link-with-space"
           >
             here
           </Link>{" "}
-          to see who redeemed this reward
+          to redeem a reward
         </p>
       </div>
     </>
