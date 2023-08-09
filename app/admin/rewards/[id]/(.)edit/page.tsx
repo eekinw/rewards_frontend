@@ -1,10 +1,24 @@
 import Link from "next/link";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/solid";
-import Modal from "@/components/DeleteRewardModal";
+import EditModal from "@/components/EditModal";
 
 interface Props {
   params: { id: number };
+}
+
+interface Rewards {
+  id: number;
+  name: string;
+  category_id: number;
+  category_title: string;
+  points_required: number;
+  is_redeemable: boolean;
+  quantity: number;
+  description: string;
+  category: {
+    title: string;
+  };
 }
 
 const getIndividualReward = async (id: number) => {
@@ -30,9 +44,7 @@ export default async function IndividualReward({ params }: Props) {
 
   return (
     <>
-      <div>
-        <Modal id={rewardId} />
-      </div>
+      <EditModal id={rewardId} reward={reward} />
       <div className="flex flex-col">
         {reward ? (
           <>

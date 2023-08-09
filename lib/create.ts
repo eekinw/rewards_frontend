@@ -14,7 +14,8 @@ export async function createReward(data: FormData) {
   const description = data.get("description");
   console.log("On the server");
     
-    await fetch("http://localhost:3100/admin/rewards/", {
+  try {
+    const response = await fetch("http://localhost:3100/admin/rewards/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -26,10 +27,17 @@ export async function createReward(data: FormData) {
          points_required,
          quantity,
          is_redeemable: true,
-         description        })
+          description
+        }),
     })
+      if (!response.ok) {
+      throw new Error('Failed to create reward.');
+        }
 
-    revalidatePath("/")
-    // this path needs to be revalidated
-    redirect("/")
+  } catch (error) {
+    console.error('Error creating reward:', error);
+  }
+
+  revalidatePath("/")
+  redirect("/")
 }

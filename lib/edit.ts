@@ -1,7 +1,8 @@
 'use server'
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation"
+
+
 
 interface Props {
   params: { id: number };
@@ -23,16 +24,22 @@ export async function editReward(data: FormData, id: number) {
                 quantity,
             }),
         });
+        const responseData = await response.json()
+        console.log(responseData)
+        
 
         if (!response.ok) {
             throw new Error('Failed to edit reward.');
         }
 
+
     } catch (error) {
         console.error('Error editing reward:', error);
+        return
     }
 
     // revalidate;
     revalidatePath("/");
-    redirect("/")
+    // redirect("/")
+    
 }

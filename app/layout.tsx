@@ -1,7 +1,7 @@
 import "styles/globals.css";
 import type { Metadata } from "next";
-import NavMenu from "../components/AdminNav";
-import SideBar from "../components/AdminSideBar";
+import NavMenu from "../components/NavMenu";
+import SideBar from "../components/SideBar";
 
 export const metadata: Metadata = {
   title: "Rewards Admin Page",
