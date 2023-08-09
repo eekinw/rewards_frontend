@@ -18,7 +18,13 @@ export default function SideBar() {
           Kaya pass
         </Link>
         <Link
-          href={"agent/rewards"}
+          href={"/"}
+          className="text-[#6b66fa] font-bold no-underline hover:scale-105"
+        >
+          Admin Rewards
+        </Link>
+        <Link
+          href={"/agent/rewards"}
           className="text-[#6b66fa] font-bold no-underline hover:scale-105"
         >
           Rewards

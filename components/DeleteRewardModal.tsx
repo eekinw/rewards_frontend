@@ -2,7 +2,7 @@
 import { useTransition } from "react";
 import React from "react";
 import Link from "next/link";
-import { deleteReward } from "@/lib/delete";
+import { deleteReward } from "@/lib/deleteReward";
 
 interface DeleteModalProps {
   id: number;

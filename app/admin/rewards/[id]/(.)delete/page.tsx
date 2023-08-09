@@ -1,4 +1,4 @@
-import Modal from "../../../../../components/DeleteModal";
+import Modal from "../../../../../components/DeleteRewardModal";
 import Link from "next/link";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/solid";

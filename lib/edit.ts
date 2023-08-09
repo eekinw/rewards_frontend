@@ -34,5 +34,5 @@ export async function editReward(data: FormData, id: number) {
 
     // revalidate;
     revalidatePath("/");
-    redirect("/admin/rewards")
+    redirect("/")
 }

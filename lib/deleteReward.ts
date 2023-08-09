@@ -21,3 +21,5 @@ export async function deleteReward(id: number) {
     revalidatePath("/");
     redirect("/")
 }
+
+

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 interface User {
   id: number;
@@ -32,23 +33,35 @@ export default async function fetchRedemptions({ params }: Props) {
 
   return (
     <div>
-      <h1 className="font-bold mb-10">
-        Redemptions for Reward{" "}
-        <span className=" text-[#6b66fa]">{params.id}</span>{" "}
-      </h1>
+      <div className="flex gap-x-3">
+        <h1 className="font-bold mb-10">
+          Redemptions for Reward{" "}
+          <span className=" text-[#6b66fa]">{params.id}</span>{" "}
+        </h1>
+      </div>
 
-      <div className="flex justify-around text-center w-full">
+      <div className="flex justify-around text-center w-full mb-6">
+        <h3 className="font-bold">Redemption ID</h3>
         <h3 className="font-bold">Claimed</h3>
         <h3 className="font-bold">Date claimed</h3>
+        <h3 className="font-bold">Delete Redemption</h3>
       </div>
       <div>
         {data.map((redemption: Redemptions) => (
           <div
             key={redemption.id}
-            className="grid grid-cols-2 justify-around gap-y-2 p-2 border shadow-md text-center"
+            className="grid grid-cols-4 justify-around gap-y-2 p-2 border shadow-md text-center"
           >
+            <p>{redemption.id}</p>
             <p>{redemption.user.email}</p>
             <p> {new Date(redemption.redemption_date).toString()}</p>
+            <Link
+              href={`/admin/rewards/${params.id}/redemptions/delete/${redemption.id}`}
+            >
+              <button className="h-6 w-6 text-[#2B2B2B]">
+                <TrashIcon />
+              </button>
+            </Link>
           </div>
         ))}
       </div>

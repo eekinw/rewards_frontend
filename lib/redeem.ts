@@ -45,28 +45,34 @@ export async function getAllUsers() {
 export async function redeemReward(FormData: FormData, id: number) {
   const userId = FormData.get("name")
 
-  // Define the URL of your backend
-  const backendURL = `http://localhost:3100/agent/rewards/${id}/redeem`;
+  const URL = `http://localhost:3100/agent/rewards/${id}/redeem`;
 
   // Send the request to the backend
   try {
-    const response = await fetch(backendURL, {
+    const response = await fetch(URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ userId }),
     });
+  
+    console.log(response.status);
 
-    // If the backend responds with an error, pass that error to the frontend
     if (!response.ok) {
-            throw new Error('Failed to edit reward.');
+      const rewardData = await response.json();
+      console.log(rewardData)
+    } else {
+      const errorData = await response.json();
+      console.log(response.status, errorData)
         }
 
     } catch (error) {
-        console.error('Error editing reward:', error);
+        console.error('Error redeeming reward:', error);
   }
   
-      revalidatePath("/");
-    redirect("/admin/rewards")
+  revalidatePath("/");
+  redirect("/")
+
+  
 }

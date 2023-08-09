@@ -12,13 +12,10 @@ export default function SideBar() {
           href={`/agent/profile`}
           className="text-[#6b66fa] font-bold no-underline hover:scale-105"
         >
-          User management
+          User Management
         </Link>
         <Link href={"/"} className="text-black no-underline cursor-not-allowed">
           Playground
-        </Link>
-        <Link href={"/"} className="text-black no-underline cursor-not-allowed">
-          Kaya pass
         </Link>
         <Link
           href={"/"}
