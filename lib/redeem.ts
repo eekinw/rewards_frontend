@@ -1,6 +1,6 @@
 'use server'
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation"
+
 
 interface User {
   id: number;
@@ -44,6 +44,7 @@ export async function getAllUsers() {
 
 export async function redeemReward(FormData: FormData, id: number) {
   const userId = FormData.get("name")
+  // console.log(userId)
 
   const URL = `http://localhost:3100/agent/rewards/${id}/redeem`;
 
@@ -72,7 +73,6 @@ export async function redeemReward(FormData: FormData, id: number) {
   }
   
   revalidatePath("/");
-  redirect("/")
 
   
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Modal from "../../../../../../components/RedeemModal";
-import { getAllUsers } from "@/lib/redeem";
+import { getAllUsers, getIndividualReward } from "@/lib/redeem";
 
 interface User {
   id: number;
@@ -36,55 +36,33 @@ interface Props {
   params: { id: number };
 }
 
-const getIndividualReward = async (id: number) => {
-  const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
+// const getIndividualReward = async (id: number) => {
+//   const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+//     cache: "no-store",
+//   });
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch data");
+//   }
 
-  const data = await res.json();
-  console.log(data);
-  return data;
-};
+//   const data = await res.json();
+//   console.log(data);
+//   return data;
+// };
 
 export default async function RedeemPage({ params }: Props) {
   const rewardId = params.id;
   const reward = await getIndividualReward(rewardId);
-
   const users = await getAllUsers();
   // const chosenUser = await
   return (
     <>
       <div>
-        <Modal id={rewardId} />
+        <Modal id={rewardId} users={users} />
       </div>
       <div className="p-8 bg-gray-100 min-h-screen">
         <h1 className="text-3xl font-bold mb-6 text-center text-[#6b66fa]">
           Redeem Reward
         </h1>
-
-        <div className="mb-8">
-          <label
-            htmlFor="userSelect"
-            className="block mb-2 font-medium text-gray-600"
-          >
-            Select User:
-          </label>
-          <select
-            name="userSelect"
-            id="userSelect"
-            className="w-full p-2 border rounded-lg focus:border-blue-500 focus:outline-none"
-          >
-            <option value="">--Choose User--</option>
-            {users.map((user: User) => (
-              <option key={user.id} value={user.id}>
-                {user.email} - {user.points} points
-              </option>
-            ))}
-          </select>
-        </div>
 
         <div className="flex justify-center">
           <div className="w-1/2 ">
