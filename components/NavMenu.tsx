@@ -23,7 +23,10 @@ export default function NavMenu() {
       <div>
         <ul className="list-none flex mr-1 gap-5 ">
           <li>
-            <Link className="no-underline" href={"/admin/redemptions"}>
+            <Link
+              className="no-underline font-bold"
+              href={"/admin/redemptions"}
+            >
               Redemptions
             </Link>
           </li>

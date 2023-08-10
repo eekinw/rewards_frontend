@@ -2,8 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 
-
-
 interface Props {
   params: { id: number };
 }

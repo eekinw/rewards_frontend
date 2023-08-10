@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getAllUsers } from "@/lib/redeem";
 
 interface User {
   id: number;
@@ -14,17 +15,6 @@ interface Redemptions {
   reward_id: number;
   redemption_date: Date;
   redemption_expiry: Date;
-}
-
-async function getAllUsers() {
-  const res = await fetch("http://localhost:3100/admin/users", {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
 }
 
 export default async function AgentProfile() {

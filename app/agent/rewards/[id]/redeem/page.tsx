@@ -24,6 +24,7 @@ export default async function RedeemPage({ params }: Props) {
   const rewardId = params.id;
   const reward = await getIndividualReward(rewardId);
   const users = await getAllUsers();
+  console.log(users);
 
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
