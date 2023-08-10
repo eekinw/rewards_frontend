@@ -30,7 +30,7 @@ export default function EditModal({ reward }: EditModalProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-xl w-1/3">
-        <h2 className="font-bold mb-5 text-xl">Edit Reward</h2>
+        <h1 className="font-bold mb-2 text-2xl">Edit Reward</h1>
 
         <form
           action={(e) => {
@@ -45,10 +45,10 @@ export default function EditModal({ reward }: EditModalProps) {
           //     await editReward(data, id);
           //   }}
           // action={editReward(e, params.id)}
-          className=" max-w-2xl mx-auto p-4 shadow-md"
+          className="max-w-2xl mx-auto p-4"
         >
-          <div className="space-y-6 p-5 flex flex-col">
-            <label className="block text-gray-700 font-semibold mb-2">
+          <div className="space-y-4 flex flex-col">
+            <label className="block text-gray-700 font-semibold">
               Reward Name
             </label>
             <input
@@ -57,7 +57,7 @@ export default function EditModal({ reward }: EditModalProps) {
               className="w-full border border-gray-300 p-2 rounded-md"
               defaultValue={reward.name}
             />
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-700 font-semibold">
               Reward Description
             </label>
             <input
@@ -66,7 +66,7 @@ export default function EditModal({ reward }: EditModalProps) {
               className="w-full border border-gray-300 p-2 rounded-md"
               defaultValue={reward.description}
             />
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-700 font-semibold">
               Points Required
             </label>
             <input
@@ -75,7 +75,7 @@ export default function EditModal({ reward }: EditModalProps) {
               className="w-full border border-gray-300 p-2 rounded-md"
               defaultValue={reward.points_required}
             />
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-700 font-semibold">
               Quantity
             </label>
             <input

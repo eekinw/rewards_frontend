@@ -53,7 +53,7 @@ interface Rewards {
 //   );
 // }
 
-export default function HomePage() {
+export default function AdminHome() {
   const [rewards, setRewards] = useState<Rewards[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 

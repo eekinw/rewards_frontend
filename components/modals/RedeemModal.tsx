@@ -63,15 +63,19 @@ export default function RedeemModal({ id, users }: RedeemModalProps) {
             </select>
           </div>
 
-          <div className="flex justify-end mt-4">
-            <Link href=".">
-              <button className="mr-3 px-4 py-2 bg-white text-[#6b66fa] border-[#6b66fa] border rounded-full hover:bg-gray-400 transition duration-200 ease-in-out">
-                Back
+          <div className="flex gap-x-3">
+            <div className="w-1/2 flex justify-center items-center">
+              <Link href="." className="w-full">
+                <button className="w-full px-4 py-2 bg-white text-[#6b66fa] border-[#6b66fa] border rounded-lg hover:bg-gray-400 transition duration-200 ease-in-out">
+                  Back
+                </button>
+              </Link>
+            </div>
+            <div className="w-1/2 flex justify-center items-center">
+              <button className="w-full px-4 py-2 bg-[#6b66fa] text-white rounded-lg hover:bg-red-600 transition duration-200 ease-in-out">
+                Redeem
               </button>
-            </Link>
-            <button className="px-4 py-2 bg-[#6b66fa]  text-white rounded-full hover:bg-red-600 transition duration-200 ease-in-out">
-              Redeem
-            </button>
+            </div>
           </div>
         </form>
       </div>
