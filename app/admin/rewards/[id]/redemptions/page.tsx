@@ -55,9 +55,7 @@ export default async function fetchRedemptions({ params }: Props) {
             <p>{redemption.id}</p>
             <p>{redemption.user.email}</p>
             <p> {new Date(redemption.redemption_date).toString()}</p>
-            <Link
-              href={`/admin/rewards/${params.id}/redemptions/delete/${redemption.id}`}
-            >
+            <Link href={"/"}>
               <button className="h-6 w-6 text-[#2B2B2B]">
                 <TrashIcon />
               </button>

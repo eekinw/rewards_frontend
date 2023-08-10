@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Modal from "../../../../../../components/RedeemModal";
+import Modal from "../../../../../../components/modals/RedeemModal";
 import { getAllUsers, getIndividualReward } from "@/lib/redeem";
 
 interface User {

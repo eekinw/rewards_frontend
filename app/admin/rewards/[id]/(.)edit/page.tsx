@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { TrashIcon } from "@heroicons/react/24/solid";
-import EditModal from "@/components/EditModal";
+import EditModal from "@/components/modals/EditModal";
 
 interface Props {
   params: { id: number };

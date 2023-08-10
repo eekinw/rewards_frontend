@@ -42,6 +42,17 @@ export async function getAllUsers() {
   return res.json();
 }
 
+export async function getAllRewards() {
+  const res = await fetch("http://localhost:3100/admin/rewards", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
 export async function redeemReward(FormData: FormData, id: number) {
   const userId = FormData.get("name")
   // console.log(userId)
@@ -76,3 +87,4 @@ export async function redeemReward(FormData: FormData, id: number) {
 
   
 }
+
