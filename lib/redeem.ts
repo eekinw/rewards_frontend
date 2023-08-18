@@ -32,7 +32,7 @@ export async function getIndividualReward(id: number) {
 
 
 export async function getAllUsers() {
-    const res = await fetch("${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/users", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/users`, {
     cache: "no-store",
   });
 
@@ -43,7 +43,7 @@ export async function getAllUsers() {
 }
 
 export async function getAllRewards() {
-  const res = await fetch("${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards`, {
     cache: "no-store",
   });
 
