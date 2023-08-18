@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 
 export async function deleteReward(id: number) {
   try {
-    const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" }
     });

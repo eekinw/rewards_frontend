@@ -20,7 +20,7 @@ interface Redemptions {
 
 
 export async function getIndividualReward(id: number) {
-  const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${id}`, {
     cache: "no-cache",
   });
 
@@ -32,7 +32,7 @@ export async function getIndividualReward(id: number) {
 
 
 export async function getAllUsers() {
-    const res = await fetch("http://localhost:3100/admin/users", {
+    const res = await fetch("${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/users", {
     cache: "no-store",
   });
 
@@ -43,7 +43,7 @@ export async function getAllUsers() {
 }
 
 export async function getAllRewards() {
-  const res = await fetch("http://localhost:3100/admin/rewards", {
+  const res = await fetch("${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards", {
     cache: "no-store",
   });
 
@@ -57,7 +57,7 @@ export async function redeemReward(FormData: FormData, id: number) {
   const userId = FormData.get("name")
   // console.log(userId)
 
-  const URL = `http://localhost:3100/agent/rewards/${id}/redeem`;
+  const URL = `${process.env.NEXT_PUBLIC_KAYAREWARDS}/agent/rewards/${id}/redeem`;
 
   // Send the request to the backend
   try {
