@@ -12,7 +12,7 @@ export async function editReward(data: FormData, id: number) {
     const points_required = parseInt(data.get("points_required") as string)
     const quantity = parseInt(data.get("quantity") as string)
     try {
-        const response = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

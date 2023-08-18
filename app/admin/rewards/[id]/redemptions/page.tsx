@@ -21,7 +21,7 @@ interface Props {
 
 export default async function fetchRedemptions({ params }: Props) {
   const res = await fetch(
-    `http://localhost:3100/admin/rewards/${params.id}/redemptions`
+    `${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${params.id}/redemptions`
   );
 
   const data = await res.json();

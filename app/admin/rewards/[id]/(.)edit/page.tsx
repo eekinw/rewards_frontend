@@ -22,9 +22,12 @@ interface Rewards {
 }
 
 const getIndividualReward = async (id: number) => {
-  const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

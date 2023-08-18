@@ -37,7 +37,7 @@ interface Props {
 }
 
 // const getIndividualReward = async (id: number) => {
-//   const res = await fetch(`http://localhost:3100/admin/rewards/${id}`, {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${id}`, {
 //     cache: "no-store",
 //   });
 //   if (!res.ok) {
