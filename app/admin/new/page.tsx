@@ -1,7 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { createReward } from "@/lib/create";
 
 export default async function NewRewardForm() {
+  const positiveIntegerPattern = /^[1-9]\d*$/;
+
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    if (name === "points_required" || name === "quantity") {
+      if (!positiveIntegerPattern.test(value)) {
+        event.target.value = ""; // Clear the input if it's not a positive integer
+      }
+    }
+  };
   return (
     <div className="h-screen overflow-auto bg-gray-100">
       <div className="container mx-auto p-4">
@@ -24,6 +36,7 @@ export default async function NewRewardForm() {
               <input
                 type="text"
                 name="name"
+                required
                 className="w-full border border-gray-300 p-2 rounded-md"
               />
             </div>
@@ -53,7 +66,9 @@ export default async function NewRewardForm() {
             </label>
             <input
               type="number"
+              required
               name="points_required"
+              onInput={handleInputChange}
               className="w-full border border-gray-300 p-2 rounded-md"
             />
 
@@ -67,6 +82,7 @@ export default async function NewRewardForm() {
               <input
                 type="text"
                 name="description"
+                required
                 className="w-full border border-gray-300 p-2 rounded-md"
               />
             </div>
@@ -95,6 +111,8 @@ export default async function NewRewardForm() {
               <input
                 type="number"
                 name="quantity"
+                required
+                onInput={handleInputChange}
                 className="w-full border border-gray-300 p-2 rounded-md"
               />
             </div>

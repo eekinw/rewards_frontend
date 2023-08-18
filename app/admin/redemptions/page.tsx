@@ -38,9 +38,6 @@ export default function RedemptionsPage() {
     fetchRedemptions();
   }, []);
 
-  console.log("Here it is:", redemptions);
-  console.log(typeof redemptions);
-
   return (
     <main className="fixed top-[150px] left-[250px] right-[50px]">
       <div className="flex justify-around mb-6">

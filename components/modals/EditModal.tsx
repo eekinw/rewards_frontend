@@ -27,6 +27,17 @@ interface Rewards {
 export default function EditModal({ reward }: EditModalProps) {
   const router = useRouter();
 
+  const positiveIntegerPattern = /^[1-9]\d*$/;
+
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    if (name === "points_required" || name === "quantity") {
+      if (!positiveIntegerPattern.test(value)) {
+        event.target.value = ""; // Clear the input if it's not a positive integer
+      }
+    }
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-xl w-1/3">
@@ -72,6 +83,7 @@ export default function EditModal({ reward }: EditModalProps) {
             <input
               type="number"
               name="points_required"
+              onInput={handleInputChange}
               className="w-full border border-gray-300 p-2 rounded-md"
               defaultValue={reward.points_required}
             />
@@ -81,6 +93,7 @@ export default function EditModal({ reward }: EditModalProps) {
             <input
               type="number"
               name="quantity"
+              onInput={handleInputChange}
               className="w-full border border-gray-300 p-2 rounded-md"
               defaultValue={reward.quantity}
             />

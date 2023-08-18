@@ -24,9 +24,9 @@ export default async function IndividualReward({ params }: Props) {
   const rewardId = params.id;
   const reward = await getIndividualReward(rewardId);
 
-  console.log("id is type", typeof rewardId);
-  console.log(rewardId);
-  console.log(typeof rewardId);
+  // console.log("id is type", typeof rewardId);
+  // console.log(rewardId);
+  // console.log(typeof rewardId);
 
   return (
     <>
