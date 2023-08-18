@@ -15,7 +15,7 @@ export async function createReward(data: FormData) {
   console.log("On the server");
     
   try {
-    const response = await fetch("${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

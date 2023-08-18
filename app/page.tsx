@@ -52,6 +52,7 @@ interface Rewards {
 //     </main>
 //   );
 // }
+console.log(process.env.NEXT_PUBLIC_KAYAREWARDS);
 
 export default function AdminHome() {
   const [rewards, setRewards] = useState<Rewards[]>([]);

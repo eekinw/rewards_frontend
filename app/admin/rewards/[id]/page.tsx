@@ -7,6 +7,7 @@ interface Props {
 }
 
 const getIndividualReward = async (id: number) => {
+  console.log(process.env.NEXT_PUBLIC_KAYAREWARDS);
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_KAYAREWARDS}/admin/rewards/${id}`,
     {
