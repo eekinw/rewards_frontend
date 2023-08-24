@@ -82,7 +82,7 @@ export default function AdminHome() {
         <>
           <div className="flex justify-around mb-6">
             <div className="grid gap-4 grid-cols-7 justify-around text-center w-full">
-              <h3 className="font-bold">Reward Name</h3>
+              <h3 className="font-bold">Reward</h3>
               <h3 className="font-bold">Category</h3>
               <h3 className="font-bold">Description</h3>
               <h3 className="font-bold">Points Required</h3>
